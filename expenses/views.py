@@ -13,39 +13,56 @@ import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from django.contrib.sessions.models import Session
 from datetime import date
-import requests
-import pandas as pd
-from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.ensemble import RandomForestClassifier
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 import nltk
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
-from django.contrib import messages
-import datetime
 from .models import ExpenseLimit
 from django.core.mail import send_mail
 from django.conf import settings
-data = pd.read_csv('dataset.csv')
+import os
 
-# Preprocessing
-stop_words = set(stopwords.words('english'))
+# Global variables for ML model (loaded lazily)
+_model = None
+_tfidf_vectorizer = None
 
-def preprocess_text(text):
-    tokens = word_tokenize(text.lower())
-    tokens = [t for t in tokens if t.isalnum() and t not in stop_words]
-    return ' '.join(tokens)
+def get_trained_model():
+    """Load and train the ML model only when needed"""
+    global _model, _tfidf_vectorizer
+    
+    if _model is not None:
+        return _model, _tfidf_vectorizer
+    
+    try:
+        # Check if dataset exists
+        dataset_path = os.path.join(settings.BASE_DIR, 'dataset.csv')
+        if not os.path.exists(dataset_path):
+            return None, None
+            
+        data = pd.read_csv(dataset_path)
+        
+        # Preprocessing
+        stop_words = set(stopwords.words('english'))
 
-data['clean_description'] = data['description'].apply(preprocess_text)
+        def preprocess_text(text):
+            tokens = word_tokenize(str(text).lower())
+            tokens = [t for t in tokens if t.isalnum() and t not in stop_words]
+            return ' '.join(tokens)
 
-# Feature extraction
-tfidf_vectorizer = TfidfVectorizer()
-X = tfidf_vectorizer.fit_transform(data['clean_description'])
+        data['clean_description'] = data['description'].apply(preprocess_text)
 
-# Train a RandomForestClassifier
-model = RandomForestClassifier()
-model.fit(X, data['category'])
+        # Feature extraction
+        _tfidf_vectorizer = TfidfVectorizer()
+        X = _tfidf_vectorizer.fit_transform(data['clean_description'])
+
+        # Train a RandomForestClassifier
+        _model = RandomForestClassifier()
+        _model.fit(X, data['category'])
+        
+        return _model, _tfidf_vectorizer
+    except Exception as e:
+        print(f"Error loading ML model: {e}")
+        return None, None
 
 @login_required(login_url='/authentication/login')
 def search_expenses(request):

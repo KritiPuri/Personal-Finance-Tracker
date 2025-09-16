@@ -12,6 +12,7 @@ try:
     nltk.data.find('corpora/stopwords')
 except LookupError:
     nltk.download('punkt', quiet=True)
+    nltk.download('punkt_tab', quiet=True)
     nltk.download('stopwords', quiet=True)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
