@@ -1,0 +1,5 @@
+myenv/ 
+__pycache__/ 
+*.pyc 
+personalfinance_db 
+staticfiles/ 
