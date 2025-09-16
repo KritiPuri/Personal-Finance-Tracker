@@ -1,7 +1,7 @@
 
+import os
 from pathlib import Path
 from django.contrib import messages
-import os
 import matplotlib
 matplotlib.use('Agg')
 
@@ -10,9 +10,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-secure-personal-finance-#kp2025@unique$key!personaltracker'
 
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',

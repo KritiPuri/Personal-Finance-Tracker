@@ -81,13 +81,5 @@ Personal-Finance-Tracker/
 ├── ...
 ```
 
-## Customization
-- Update `static/css/personal-style.css` for your own branding
-- Add new features or modify models as needed
-
-## License
-This project is licensed under the MIT License.
-
----
 
 *Empowering you to take control of your finances!*
