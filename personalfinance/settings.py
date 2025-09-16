@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-secure-personal-finance-#kp2025@unique$key!personaltracker'
 
-DEBUG = os.environ.get('DEBUG', 'True') == 'True'
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = ['*']
 
@@ -71,7 +71,7 @@ WSGI_APPLICATION = 'personalfinance.wsgi.application'
 DATABASES = {
        'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'personalfinance_db', # name of the db file. 
+        'NAME': BASE_DIR / 'personalfinance_db', # name of the db file. 
                  # If one doesn't exist, it will be created at migration time.
     }
 }
