@@ -3,3 +3,8 @@ __pycache__/
 *.pyc 
 personalfinance_db 
 staticfiles/ 
+.DS_Store
+*.log
+test_deployment.py
+test_deployment.bat
+test_production.sh 
