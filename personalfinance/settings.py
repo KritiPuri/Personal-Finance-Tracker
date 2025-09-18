@@ -22,7 +22,7 @@ SECRET_KEY = 'django-secure-personal-finance-#kp2025@unique$key!personaltracker'
 
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["*", ".up.railway.app", "127.0.0.1", "localhost"]
 
 # CSRF trusted origins for Railway deployment
 CSRF_TRUSTED_ORIGINS = [
