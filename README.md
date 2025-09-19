@@ -2,7 +2,9 @@
 # Personal Finance Tracker
 
 
-🚀 **Live Demo:** [personal-finance-tracker-production-636a.up.railway.app](personal-finance-tracker-production-636a.up.railway.app)
+## 🚀 Live Demo  
+Check out the live project here: [Personal Finance Tracker](https://personal-finance-tracker-production-636a.up.railway.app)
+
 
 A modern, full-featured Django web application for managing personal finances, tracking expenses, forecasting budgets, and generating insightful reports.
 
