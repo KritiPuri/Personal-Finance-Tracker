@@ -1,3 +1,259 @@
+/* === Force Sidebar and Icon Colors for MyExpense === */
+#sidebar {
+  background: linear-gradient(135deg, #2563eb 0%, #22c55e 100%) !important;
+}
+#sidebar .logo {
+  color: #22c55e !important;
+}
+#sidebar .sidebar-heading {
+  color: #fd7e14 !important;
+}
+#sidebar .nav-link {
+  color: #fff !important;
+}
+#sidebar .nav-link:hover, #sidebar .nav-link.active {
+  background: #FDBA74 !important;
+  color: #18181b !important;
+}
+#sidebar .nav-link i {
+  color: #2563eb !important;
+  transition: color 0.2s;
+}
+#sidebar .nav-link:hover i {
+  color: #22c55e !important;
+}
+/* Icon color for each section */
+#sidebar .nav-link[href*='expenses'] i { color: #2563eb !important; }
+#sidebar .nav-link[href*='income'] i { color: #22c55e !important; }
+#sidebar .nav-link[href*='forecast'] i { color: #FDBA74 !important; }
+#sidebar .nav-link[href*='stats'] i { color: #fd7e14 !important; }
+#sidebar .nav-link[href*='report'] i { color: #18181b !important; }
+#sidebar .nav-link[href*='preferences'] i { color: #22c55e !important; }
+#sidebar .nav-link[href*='account'] i { color: #2563eb !important; }
+/* === MyExpense Modern Finance Dashboard Theme === */
+
+:root {
+  --primary-blue: #2563eb;
+  --primary-green: #22c55e;
+  --primary-black: #18181b;
+  --accent-peach: #FDBA74;
+  --accent-orange: #fd7e14;
+  --sidebar-gradient: linear-gradient(135deg, #2563eb 0%, #22c55e 100%);
+  --sidebar-width: 260px;
+  --card-radius: 18px;
+  --card-shadow: 0 4px 24px #e0f2fe;
+  --header-black: #18181b;
+  --body-gray: #6B7280;
+  --bg-light: #f8fafc;
+  --font-main: 'Inter', 'Poppins', Arial, sans-serif;
+}
+
+body {
+  background: var(--bg-light);
+  font-family: var(--font-main);
+  color: var(--body-gray);
+}
+
+#sidebar {
+  background: var(--sidebar-gradient);
+  color: #fff;
+  min-width: var(--sidebar-width);
+  max-width: var(--sidebar-width);
+  border-radius: 30px 0 0 30px;
+  box-shadow: 2px 0 16px 0 #e0e0e0;
+  margin: 20px 0 20px 20px;
+  padding-bottom: 20px;
+}
+#sidebar .logo {
+  color: var(--primary-green);
+  font-family: 'Poppins', 'Inter', Arial, sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+  display: block;
+  text-align: center;
+}
+#sidebar .sidebar-heading {
+  color: var(--accent-orange);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+}
+#sidebar .nav-link {
+  color: #fff;
+  font-size: 1rem;
+  border-radius: 12px;
+  margin-bottom: 0.5rem;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+#sidebar .nav-link:hover, #sidebar .nav-link.active {
+  background: var(--accent-peach);
+  color: var(--primary-green);
+  font-weight: 600;
+  transform: translateX(6px) scale(1.04);
+}
+#sidebar .nav-link i {
+  transition: color 0.2s;
+}
+#sidebar .nav-link:hover i {
+  color: var(--primary-green);
+}
+
+.content {
+  background: #fff;
+  border-radius: 30px;
+  margin: 20px 20px 20px 0;
+  box-shadow: 0 2px 16px 0 #e0e0e0;
+  padding: 2rem 2rem 1rem 2rem;
+  min-height: 100vh;
+}
+
+/* Dashboard Cards */
+.card {
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  background: #fff;
+  border: none;
+  margin-bottom: 2rem;
+}
+.card .card-header {
+  background: transparent;
+  border: none;
+  font-weight: 700;
+  color: var(--header-black);
+  font-size: 1.1rem;
+}
+.card .card-body {
+  color: var(--body-gray);
+  font-size: 1.05rem;
+}
+.card .h5, .card .h3, .card .h6 {
+  color: var(--header-black);
+  font-family: 'Poppins', 'Inter', Arial, sans-serif;
+  font-weight: 700;
+}
+.card .text-info {
+  color: var(--primary-blue) !important;
+}
+.card .text-success {
+  color: var(--primary-green) !important;
+}
+.card .text-warning {
+  color: var(--accent-orange) !important;
+}
+.card .progress-bar.bg-info {
+  background: var(--primary-blue) !important;
+}
+.card .progress-bar.bg-success {
+  background: var(--primary-green) !important;
+}
+.card .progress-bar.bg-warning {
+  background: var(--accent-orange) !important;
+}
+
+/* Buttons */
+.btn-primary {
+  background: var(--accent-peach);
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  color: #fff;
+  transition: background 0.2s;
+}
+.btn-primary:hover {
+  background: var(--primary-teal);
+  color: #fff;
+}
+
+/* Navbar Avatar Dropdown */
+.navbar {
+  background: #fff;
+  height: 60px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border-radius: 0 0 18px 18px;
+  box-shadow: 0 2px 8px #e0e0e0;
+  padding: 0 32px;
+}
+.navbar .avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--primary-blue);
+  cursor: pointer;
+  transition: border 0.2s;
+}
+.navbar .avatar:hover {
+  border: 2px solid var(--accent-peach);
+}
+.navbar .dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 60px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px #e0e0e0;
+  min-width: 160px;
+  z-index: 10;
+}
+.navbar li:hover .dropdown {
+  display: block;
+}
+.dropdown-content {
+  padding: 12px 16px;
+  color: var(--body-gray);
+  text-decoration: none;
+  display: block;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+.dropdown-content:hover {
+  background: var(--accent-peach);
+  color: #fff;
+}
+
+/* Chart.js Gradient Line (override in JS) */
+.chart-area canvas {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 16px #e0e0e0;
+  padding: 16px;
+}
+
+/* General Spacing */
+.container-fluid, .container {
+  padding: 32px 24px;
+}
+
+/* Modern Typography */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--header-black);
+  font-family: 'Poppins', 'Inter', Arial, sans-serif;
+  font-weight: 700;
+}
+p, span, label, .body-text {
+  color: var(--body-gray);
+  font-family: var(--font-main);
+}
+
+/* Hide scrollbars for sidebar */
+#sidebar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+#sidebar::-webkit-scrollbar {
+  display: none;
+}
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors

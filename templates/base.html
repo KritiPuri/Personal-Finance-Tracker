@@ -8,10 +8,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700|Poppins:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{%static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     {% block link %}
 
     {% endblock link %}
@@ -28,42 +28,86 @@
     {% endblock css %}
 
     <style>
-        .content {
-            width: 100%;
-            overflow-y: scroll;
-            height: 100vh;
-            background-color: #F0E9CC; /* Set content background color */
+        body {
+            background: #f8fafc;
+            font-family: 'Quicksand', 'Poppins', Arial, sans-serif;
         }
-    
+        .wrapper {
+            min-height: 100vh;
+            display: flex;
+            background: #f8fafc;
+        }
         #sidebar {
-            position: sticky;
-            top: 0;
-            height: 100%;
-            z-index: 2;
-            background-color: #00A7A7; /* Set sidebar background color */
+            min-width: 250px;
+            max-width: 270px;
+            background: linear-gradient(135deg, #f9e7fe 0%, #e0f7fa 100%);
+            color: #4a4a4a;
+            border-radius: 30px 0 0 30px;
+            box-shadow: 2px 0 16px 0 #e0e0e0;
+            margin: 20px 0 20px 20px;
+            padding-bottom: 20px;
         }
-    
-        .black-text {
-            color: black;
-            font-weight: bold;
-        }
-    
         #sidebar .custom-menu {
             position: absolute;
+            top: 20px;
+            right: 20px;
         }
-    
         .logo {
-            font-size: 25px;
-            color: white; /* Ensures the logo text is visible on the new sidebar color */
+            font-size: 2rem;
+            font-weight: 700;
+            color: #7c3aed;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+            display: block;
+            text-align: center;
         }
-    
-        .sidebar-collapsed .content {
-            margin: auto;
+        .sidebar-heading {
+            color: #7c3aed;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
         }
-    
-        /* Adjust text color in sidebar links to ensure readability */
-        #sidebar .nav-link, #sidebar .sidebar-heading {
-            color: white;
+        #sidebar .nav-link {
+            color: #4a4a4a;
+            font-size: 1rem;
+            border-radius: 12px;
+            margin-bottom: 0.5rem;
+            transition: background 0.2s, color 0.2s;
+        }
+        #sidebar .nav-link:hover, #sidebar .nav-link.active {
+            background: #e0f2fe;
+            color: #7c3aed;
+            font-weight: 600;
+        }
+        .content {
+            width: 100%;
+            min-height: 100vh;
+            background: #fff;
+            border-radius: 30px;
+            margin: 20px 20px 20px 0;
+            box-shadow: 0 2px 16px 0 #e0e0e0;
+            padding: 2rem 2rem 1rem 2rem;
+        }
+        .btn-primary {
+            background: #7c3aed;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .btn-primary:hover {
+            background: #a78bfa;
+        }
+        /* Cute icon style */
+        .fa, .fas, .far, .fal, .fab {
+            color: #7c3aed;
+        }
+        /* Add playful shadow to cards */
+        .card {
+            border-radius: 18px;
+            box-shadow: 0 4px 24px 0 #f3e8ff;
         }
     </style>
     
@@ -75,66 +119,41 @@
         <nav id="sidebar">
             <div class="custom-menu">
                 <button type="button" id="sidebarCollapse" class="btn btn-primary">
-                    <i class="fa fa-bars"></i>
+                    <i class="fas fa-bars"></i>
                     <span class="sr-only">Toggle Menu</span>
                 </button>
             </div>
             <div class="p-4 pt-5">
-                <h1><a href="/" class="logo">MyExpense</a></h1>
+                <span class="logo">💸 MyExpense</span>
                 <ul class="list-unstyled components mb-5">
-                    <h6 class="sidebar-heading mt-4 mb-1 black-text ">
-                        Dashboard
-                    </h6>
+                    <h6 class="sidebar-heading">Dashboard</h6>
                     <li class="nav-item">
-                        <a class="nav-link p-2" href="{%url 'expenses'%}">
-                            Expenses
-                        </a>
+                        <a class="nav-link p-2" href="{% url 'expenses' %}"><i class="fas fa-wallet"></i> Expenses</a>
                     </li>
-                    <li class="nav-item p-2">
-                        <a class="nav-link" href="{%url 'income'%}">
-                            Income
-                        </a>
-                    </li>
-                    <li class="nav-item p-2">
-                        <a class="nav-link" href="{%url 'forecast'%}">
-                            Forecast Expenses
-                        </a>
-                    </li>
-
-                    <h6 class="sidebar-heading mt-4 mb-1 black-text ">
-                        SUMMARY
-                    </h6>
                     <li class="nav-item">
-                        <a class="nav-link p-2" href="{%url 'stats'%}">
-                            Expense Summary
-                        </a>
+                        <a class="nav-link p-2" href="{% url 'income' %}"><i class="fas fa-coins"></i> Income</a>
                     </li>
-                    <li class="nav-item p-2">
-                        <a class="nav-link" href="{%url 'income-summary'%}">
-                            Income Summary
-                        </a>
-                    </li>
-                    <li class="nav-item p-2">
-                        <a class="nav-link" href="{%url 'report'%}">
-                            Reports
-                        </a>
-                    </li>
-
-                    <h6 class="sidebar-heading mt-4 mb-1 black-text ">
-                        Settings
-                    </h6>
                     <li class="nav-item">
-                        <a class="nav-link p-2" href="{%url 'preferences'%}">
-                            General
-                        </a>
+                        <a class="nav-link p-2" href="{% url 'forecast' %}"><i class="fas fa-chart-line"></i> Forecast Expenses</a>
                     </li>
-                    <li class="nav-item p-2">
-                        <a class="nav-link" href="{%url 'account' %}">
-                            Account
-                        </a>
+                    <h6 class="sidebar-heading">Summary</h6>
+                    <li class="nav-item">
+                        <a class="nav-link p-2" href="{% url 'stats' %}"><i class="fas fa-chart-pie"></i> Expense Summary</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link p-2" href="{% url 'income-summary' %}"><i class="fas fa-piggy-bank"></i> Income Summary</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link p-2" href="{% url 'report' %}"><i class="fas fa-file-invoice-dollar"></i> Reports</a>
+                    </li>
+                    <h6 class="sidebar-heading">Settings</h6>
+                    <li class="nav-item">
+                        <a class="nav-link p-2" href="{% url 'preferences' %}"><i class="fas fa-cog"></i> General</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link p-2" href="{% url 'account' %}"><i class="fas fa-user-circle"></i> Account</a>
                     </li>
                 </ul>
-
             </div>
         </nav>
 
