@@ -116,7 +116,16 @@
 <body>
 
     <div class="wrapper d-flex align-items-stretch">
-        <nav id="sidebar">
+    <nav id="sidebar" style="background: #8d6fd1 !important; color: #fff !important; border-top-right-radius: 24px !important; border-bottom-right-radius: 24px !important; box-shadow: 2px 0 16px 0 #e0e0ff !important; z-index: 9999 !important;">
+    <style>
+        #sidebar, #sidebar * {
+            color: #fff !important;
+        }
+        #sidebar .logo,
+        #sidebar .sidebar-heading {
+            color: #fff !important;
+        }
+    </style>
             <div class="custom-menu">
                 <button type="button" id="sidebarCollapse" class="btn btn-primary">
                     <i class="fas fa-bars"></i>

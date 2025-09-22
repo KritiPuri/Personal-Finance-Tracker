@@ -1,101 +1,77 @@
-/* === Force Sidebar and Icon Colors for MyExpense === */
+#main-wrapper #sidebar, body #sidebar, html #sidebar, #sidebar {
+  background: linear-gradient(135deg, #7b2ff2 0%, #f357a8 100%) !important;
+  color: #fff !important;
+  border-top-right-radius: 24px !important;
+  border-bottom-right-radius: 24px !important;
+  box-shadow: 2px 0 16px 0 #e0e0ff !important;
+  z-index: 9999 !important;
+}
 #sidebar {
-  background: linear-gradient(135deg, #2563eb 0%, #22c55e 100%) !important;
-}
-#sidebar .logo {
-  color: #22c55e !important;
-}
-#sidebar .sidebar-heading {
-  color: #fd7e14 !important;
-}
-#sidebar .nav-link {
+  background: linear-gradient(135deg, #7b2ff2 0%, #f357a8 100%) !important;
+  border-top-right-radius: 24px !important;
+  border-bottom-right-radius: 24px !important;
+  box-shadow: 2px 0 16px 0 #e0e0ff !important;
   color: #fff !important;
 }
-#sidebar .nav-link:hover, #sidebar .nav-link.active {
-  background: #FDBA74 !important;
-  color: #18181b !important;
-}
-#sidebar .nav-link i {
-  color: #2563eb !important;
-  transition: color 0.2s;
-}
-#sidebar .nav-link:hover i {
-  color: #22c55e !important;
-}
-/* Icon color for each section */
-#sidebar .nav-link[href*='expenses'] i { color: #2563eb !important; }
-#sidebar .nav-link[href*='income'] i { color: #22c55e !important; }
-#sidebar .nav-link[href*='forecast'] i { color: #FDBA74 !important; }
-#sidebar .nav-link[href*='stats'] i { color: #fd7e14 !important; }
-#sidebar .nav-link[href*='report'] i { color: #18181b !important; }
-#sidebar .nav-link[href*='preferences'] i { color: #22c55e !important; }
-#sidebar .nav-link[href*='account'] i { color: #2563eb !important; }
-/* === MyExpense Modern Finance Dashboard Theme === */
+/* === Force Sidebar and Icon Colors for MyExpense === */
+/* === Modern Purple Theme for MyExpense === */
+#sidebar {
+  background: linear-gradient(135deg, #7b2ff2 0%, #f357a8 100%) !important;
+/* === Modern Purple Sidebar Theme for MyExpense === */
+#sidebar {
+  background: linear-gradient(135deg, #7b2ff2 0%, #f357a8 100%) !important;
 
+/* === Modern Purple Sidebar Theme for MyExpense === */
 :root {
-  --primary-blue: #2563eb;
-  --primary-green: #22c55e;
-  --primary-black: #18181b;
-  --accent-peach: #FDBA74;
-  --accent-orange: #fd7e14;
-  --sidebar-gradient: linear-gradient(135deg, #2563eb 0%, #22c55e 100%);
-  --sidebar-width: 260px;
-  --card-radius: 18px;
-  --card-shadow: 0 4px 24px #e0f2fe;
-  --header-black: #18181b;
-  --body-gray: #6B7280;
-  --bg-light: #f8fafc;
-  --font-main: 'Inter', 'Poppins', Arial, sans-serif;
-}
-
-body {
-  background: var(--bg-light);
-  font-family: var(--font-main);
-  color: var(--body-gray);
+  --primary-purple: #7b2ff2;
+  --primary-pink: #f357a8;
+  --accent-lavender: #b388ff;
+  --accent-violet: #c77dff;
+  --sidebar-gradient: linear-gradient(135deg, #7b2ff2 0%, #f357a8 100%);
 }
 
 #sidebar {
-  background: var(--sidebar-gradient);
-  color: #fff;
-  min-width: var(--sidebar-width);
-  max-width: var(--sidebar-width);
-  border-radius: 30px 0 0 30px;
+  background: var(--sidebar-gradient) !important;
+}
+#sidebar .logo {
+  color: #c77dff !important;
+}
   box-shadow: 2px 0 16px 0 #e0e0e0;
   margin: 20px 0 20px 20px;
   padding-bottom: 20px;
 }
-#sidebar .logo {
-  color: var(--primary-green);
+  color: var(--primary-purple) !important;
+  color: #a259f7;
   font-family: 'Poppins', 'Inter', Arial, sans-serif;
-  font-size: 2rem;
+  color: var(--primary-pink) !important;
   font-weight: 700;
   letter-spacing: 1px;
-  margin-bottom: 1.5rem;
+  color: var(--accent-violet) !important;
   display: block;
   text-align: center;
-}
+  background: var(--primary-purple) !important;
 #sidebar .sidebar-heading {
-  color: var(--accent-orange);
-  font-size: 1.1rem;
+  color: #c77dff;
+  background: var(--primary-pink) !important;
   font-weight: 600;
   margin-top: 1.5rem;
-  margin-bottom: 0.5rem;
+  background: var(--accent-violet) !important;
   letter-spacing: 1px;
 }
-#sidebar .nav-link {
+  background: linear-gradient(90deg, #7b2ff2 0%, #f357a8 100%);
   color: #fff;
   font-size: 1rem;
-  border-radius: 12px;
+  background: #a259f7;
   margin-bottom: 0.5rem;
   transition: background 0.2s, color 0.2s, transform 0.2s;
-  padding: 10px 18px;
+  border: 2px solid var(--primary-purple);
   display: flex;
   align-items: center;
-  gap: 10px;
+  border: 2px solid var(--primary-pink);
 }
 #sidebar .nav-link:hover, #sidebar .nav-link.active {
   background: var(--accent-peach);
-  color: var(--primary-green);
+  color: #a259f7;
   font-weight: 600;
   transform: translateX(6px) scale(1.04);
 }
@@ -103,7 +79,7 @@ body {
   transition: color 0.2s;
 }
 #sidebar .nav-link:hover i {
-  color: var(--primary-green);
+  color: #a259f7;
 }
 
 .content {
@@ -143,19 +119,19 @@ body {
   color: var(--primary-blue) !important;
 }
 .card .text-success {
-  color: var(--primary-green) !important;
+  color: #a259f7 !important;
 }
 .card .text-warning {
-  color: var(--accent-orange) !important;
+  color: #c77dff !important;
 }
 .card .progress-bar.bg-info {
   background: var(--primary-blue) !important;
 }
 .card .progress-bar.bg-success {
-  background: var(--primary-green) !important;
+  background: #a259f7 !important;
 }
 .card .progress-bar.bg-warning {
-  background: var(--accent-orange) !important;
+  background: #c77dff !important;
 }
 
 /* Buttons */
@@ -266,9 +242,9 @@ p, span, label, .body-text {
   --purple: #6f42c1;
   --pink: #e83e8c;
   --red: #dc3545;
-  --orange: #fd7e14;
+  --orange: #c77dff; /* unused, for compatibility only */
   --yellow: #ffc107;
-  --green: #28a745;
+  --green: #a259f7; /* unused, for compatibility only */
   --teal: #20c997;
   --cyan: #17a2b8;
   --white: #fff;
@@ -276,7 +252,7 @@ p, span, label, .body-text {
   --gray-dark: #343a40;
   --primary: #007bff;
   --secondary: #6c757d;
-  --success: #28a745;
+  --success: #a259f7;
   --info: #17a2b8;
   --warning: #ffc107;
   --danger: #dc3545;
@@ -2730,7 +2706,7 @@ textarea.form-control {
   width: 100%;
   margin-top: 0.25rem;
   font-size: 80%;
-  color: #28a745;
+  color: #a259f7;
 }
 
 .valid-tooltip {
@@ -2750,9 +2726,9 @@ textarea.form-control {
 
 .was-validated .form-control:valid,
 .form-control.is-valid {
-  border-color: #28a745;
+  border-color: #a259f7;
   padding-right: calc(1.5em + 0.75rem);
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+  /* background-image: none; */
   background-repeat: no-repeat;
   background-position: center right calc(0.375em + 0.1875rem);
   background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
@@ -2782,7 +2758,7 @@ textarea.form-control.is-valid {
 .custom-select.is-valid {
   border-color: #28a745;
   padding-right: calc((1em + 0.75rem) * 3 / 4 + 1.75rem);
-  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 0.75rem center/8px 10px, url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e") #fff no-repeat center right 1.75rem/calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+  /* background: none; */
 }
 
 .was-validated .custom-select:valid:focus,
@@ -3252,7 +3228,7 @@ fieldset:disabled a.btn {
 
 .btn-success {
   color: #fff;
-  background-color: #28a745;
+  /* background-color: #a259f7; */
   border-color: #28a745;
 }
 
@@ -3271,7 +3247,7 @@ fieldset:disabled a.btn {
 .btn-success.disabled,
 .btn-success:disabled {
   color: #fff;
-  background-color: #28a745;
+  background-color: #a259f7;
   border-color: #28a745;
 }
 
@@ -3567,7 +3543,7 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-success {
-  color: #28a745;
+  color: #a259f7;
   border-color: #28a745;
 }
 
