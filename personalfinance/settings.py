@@ -22,13 +22,23 @@ SECRET_KEY = 'django-secure-personal-finance-#kp2025@unique$key!personaltracker'
 
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ["*", ".up.railway.app", "127.0.0.1", "localhost"]
 
-# CSRF trusted origins for Railway deployment
+# Comma-separated list in env, e.g.:
+# ALLOWED_HOSTS=YOUR-SUBDOMAIN.up.railway.app,your-custom-domain.com
+ALLOWED_HOSTS = [h.strip() for h in os.environ.get('ALLOWED_HOSTS', '*').split(',')]
+
+# CSRF trusted origins (Django 5.x: exact origins only, no wildcards)
 CSRF_TRUSTED_ORIGINS = [
-    'https://*.railway.app',
-    'https://*.up.railway.app',
+    origin.strip() for origin in os.environ.get('CSRF_TRUSTED_ORIGINS', '').split(',')
+    if origin.strip()
 ]
+
+# (Optional) CORS allowed origins for frontend integration
+# If using django-cors-headers, uncomment below:
+# CORS_ALLOWED_ORIGINS = [
+#     origin.strip() for origin in os.environ.get('CORS_ALLOWED_ORIGINS', '').split(',')
+#     if origin.strip()
+# ]
 
 # Security settings for production
 if not DEBUG:
