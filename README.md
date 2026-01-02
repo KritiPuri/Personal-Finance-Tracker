@@ -323,13 +323,11 @@ Personal-Finance-Tracker/
 
 ```mermaid
 flowchart TD
-   A[User types description]
-   B[JS debounces input (500ms)]
-   C[AJAX POST /api/predict-category/]
-   D[NLTK preprocessing → TF-IDF vectorization]
-   E[Random Forest prediction]
-   F[Category auto-filled]
-   A --> B --> C --> D --> E --> F
+   A[User types description] --> B[JS debounces input (500ms)]
+   B --> C[AJAX POST /api/predict-category/]
+   C --> D[NLTK preprocessing + TF-IDF vectorization]
+   D --> E[Random Forest prediction]
+   E --> F[Category auto-filled]
 ```
 
 **Implementation:**
@@ -341,15 +339,13 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-   A[User visits /forecast/]
-   B[Load last 180 expenses]
-   C[Group by date + fill missing days]
-   D[Detect weekly seasonality]
-   E[Train Holt-Winters model]
-   F[Generate 30-day forecast]
-   G[Create matplotlib chart]
-   H[Display predictions]
-   A --> B --> C --> D --> E --> F --> G --> H
+   A[User visits /forecast/] --> B[Load last 180 expenses]
+   B --> C[Group by date + fill missing days]
+   C --> D[Detect weekly seasonality]
+   D --> E[Train Holt-Winters model]
+   E --> F[Generate 30-day forecast]
+   F --> G[Create matplotlib chart]
+   G --> H[Display predictions]
 ```
 
 **Implementation:**
