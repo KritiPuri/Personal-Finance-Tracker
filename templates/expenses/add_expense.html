@@ -70,50 +70,80 @@
 
 <!-- Add JavaScript to make category predictions -->
 {% block js %}
-
-
-
+<script>
 // Function to predict category based on description
 function predictCategory() {
-const description = document.getElementById('description-input').value;
-if (description) {
-// Display the loading indicator
-document.getElementById('loading-indicator').style.display = 'inline';
-
-// Send a request to your server to predict the category
-const formData = new FormData();
-formData.append('description', description);
-fetch('{% url "predict-category" %}', {
-method: 'POST',
-body: formData,
-headers: {
-'X-CSRFToken': getCookie('csrftoken')
-},
-})
-.then(response => response.json())
-.then(data => {
-// Hide the loading indicator
-document.getElementById('loading-indicator').style.display = 'none';
-
-// Update the category select input with the predicted category
-const categorySelect = document.getElementById('category-input');
-setTimeout(()=>{
-categorySelect.value = data.predicted_category;
-categorySelect.style.color="black";
-},3000);
-categorySelect.value="Predicting Category...."
-categorySelect.style.color="green";
-// Display the predicted category below the description input
-const predictedCategoryDiv = document.getElementById('predicted-category');
-predictedCategoryDiv.innerHTML = `Predicted Category: ${data.predicted_category}`;
-})
-.catch(error => {
-<!-- console.error('Error predicting category:', error); -->
-// Hide the loading indicator in case of an error
-document.getElementById('loading-indicator').style.display = 'none';
-<!-- categoryInput.value = data.predicted_category; -->
-});
-}
+    const description = document.getElementById('description-input').value.trim();
+    const categoryInput = document.getElementById('category-input');
+    
+    // Only predict if description has at least 2 characters
+    if (description && description.length >= 2) {
+        // Display the loading indicator
+        const loadingIndicator = document.getElementById('loading-indicator');
+        if (loadingIndicator) {
+            loadingIndicator.style.display = 'inline';
+        }
+        
+        // Show predicting status
+        categoryInput.value = "Predicting...";
+        categoryInput.style.color = "green";
+        categoryInput.disabled = true;
+        
+        // Send a request to your server to predict the category
+        fetch('{% url "predict-category" %}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken')
+            },
+            body: JSON.stringify({ description: description })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Hide the loading indicator
+            if (loadingIndicator) {
+                loadingIndicator.style.display = 'none';
+            }
+            
+            // Update the category input with the predicted category
+            if (data.predicted_category) {
+                categoryInput.value = data.predicted_category;
+                categoryInput.style.color = "black";
+                categoryInput.disabled = false;
+            } else {
+                categoryInput.value = "";
+                categoryInput.style.color = "black";
+                categoryInput.disabled = false;
+            }
+        })
+        .catch(error => {
+            console.error('Error predicting category:', error);
+            // Hide the loading indicator in case of an error
+            if (loadingIndicator) {
+                loadingIndicator.style.display = 'none';
+            }
+            // Reset category input
+            categoryInput.value = "";
+            categoryInput.style.color = "red";
+            categoryInput.placeholder = "Error predicting category";
+            categoryInput.disabled = false;
+            
+            // Show error message if user is not authenticated
+            if (error.message.includes('401') || error.message.includes('403')) {
+                alert('Please login to use category prediction');
+            }
+        });
+    } else {
+        // Clear category if description is too short
+        categoryInput.value = "";
+        categoryInput.style.color = "black";
+        categoryInput.disabled = false;
+    }
 }
 
 // Function to get the CSRF token from cookies
@@ -123,7 +153,14 @@ const parts = value.split(`; ${name}=`);
 if (parts.length === 2) return parts.pop().split(';').shift();
 }
 
-// Listen for input changes in the description field
+// Listen for input changes in the description field with debouncing
 const descriptionInput = document.getElementById('description-input');
-descriptionInput.addEventListener('input', predictCategory);
+let debounceTimer;
+descriptionInput.addEventListener('input', function() {
+    // Clear previous timer
+    clearTimeout(debounceTimer);
+    // Set new timer to call predictCategory after 500ms of no typing
+    debounceTimer = setTimeout(predictCategory, 500);
+});
+</script>
 {% endblock js %}
