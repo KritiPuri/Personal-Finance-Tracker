@@ -321,20 +321,10 @@ Personal-Finance-Tracker/
 
 ### **1. Adding an Expense with AI Category Prediction**
 
-```mermaid
-flowchart TD
-   A[User types description]
-   B[JS debounces input (500ms)]
-   C[AJAX POST /api/predict-category/]
-   D[NLTK preprocessing + TF-IDF vectorization]
-   E[Random Forest prediction]
-   F[Category auto-filled]
-   A --> B
-   B --> C
-   C --> D
-   D --> E
-   E --> F
-```
+-User types description → JavaScript debounces input (500ms)
+-AJAX POST to /api/predict-category/
+-NLTK preprocessing → TF-IDF vectorization
+-Random Forest prediction → Category auto-filled
 
 **Implementation:**
 - Frontend: `templates/expenses/add_expense.html` (JavaScript with debouncing)
