@@ -322,10 +322,14 @@ Personal-Finance-Tracker/
 ### **1. Adding an Expense with AI Category Prediction**
 
 ```mermaid
-User types description → JavaScript debounces input (500ms) → 
-AJAX POST to /api/predict-category/ → 
-NLTK preprocessing → TF-IDF vectorization → 
-Random Forest prediction → Category auto-filled
+flowchart TD
+   A[User types description]
+   B[JS debounces input (500ms)]
+   C[AJAX POST /api/predict-category/]
+   D[NLTK preprocessing → TF-IDF vectorization]
+   E[Random Forest prediction]
+   F[Category auto-filled]
+   A --> B --> C --> D --> E --> F
 ```
 
 **Implementation:**
@@ -336,11 +340,16 @@ Random Forest prediction → Category auto-filled
 ### **2. Generating 30-Day Expense Forecast**
 
 ```mermaid
-User visits /forecast/ → Load last 180 expenses → 
-Group by date + fill missing days → 
-Detect seasonality (weekly patterns) → 
-Train Holt-Winters model → Generate 30-day forecast → 
-Create matplotlib chart → Display predictions
+flowchart TD
+   A[User visits /forecast/]
+   B[Load last 180 expenses]
+   C[Group by date + fill missing days]
+   D[Detect weekly seasonality]
+   E[Train Holt-Winters model]
+   F[Generate 30-day forecast]
+   G[Create matplotlib chart]
+   H[Display predictions]
+   A --> B --> C --> D --> E --> F --> G --> H
 ```
 
 **Implementation:**
