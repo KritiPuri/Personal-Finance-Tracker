@@ -323,11 +323,17 @@ Personal-Finance-Tracker/
 
 ```mermaid
 flowchart TD
-   A[User types description] --> B[JS debounces input (500ms)]
-   B --> C[AJAX POST /api/predict-category/]
-   C --> D[NLTK preprocessing + TF-IDF vectorization]
-   D --> E[Random Forest prediction]
-   E --> F[Category auto-filled]
+   A[User types description]
+   B[JS debounces input (500ms)]
+   C[AJAX POST /api/predict-category/]
+   D[NLTK preprocessing + TF-IDF vectorization]
+   E[Random Forest prediction]
+   F[Category auto-filled]
+   A --> B
+   B --> C
+   C --> D
+   D --> E
+   E --> F
 ```
 
 **Implementation:**
